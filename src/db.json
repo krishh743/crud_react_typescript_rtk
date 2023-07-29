@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "name": "avinash",
+      "email": " avi@gmail.com",
+      "phone": " 9774854854",
+      "address": "Lucknow",
+      "id": 5
+    },
+    {
+      "name": "User 4",
+      "email": " user@gmail.com",
+      "phone": " 9832628716",
+      "address": "Silkboard,Bangalore",
+      "id": 6
+    }
+  ]
+}

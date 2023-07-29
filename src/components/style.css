@@ -1,0 +1,23 @@
+.text{
+font-size:1.6rem
+}
+
+.details-container{
+padding: 50px;
+}
+
+.btn-large{
+width: 15%;
+ height:80px;
+ font-size:1.8rem !important;
+}
+
+.row-style {
+font-size: 1.2rem !important;
+color:white !important;
+font-weight: bold;
+}
+
+.data-row {
+    font-size: 1.2rem !important;
+}
