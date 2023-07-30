@@ -1,8 +1,13 @@
 import React, {useState, useEffect} from "react";
-import {Button, TextField, Grid, Paper, Typography} from "@mui/material";
+import {Button, TextField, Grid, Paper, Typography, Box, Avatar} from "@mui/material";
 import {useNavigate, useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {updateUser} from "../redux/Reducer";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+import Container from "@mui/material/Container";
+import CssBaseline from "@mui/material/CssBaseline";
+
+
 interface FormData {
   id: number; // Update the type to be 'number' if 'id' in the Redux store is always a number
   name: string;
@@ -22,7 +27,7 @@ const initialState: FormData = {
   address: "",
   id: 0
 };
-
+const defaultTheme = createTheme();
 function EditComponents() {
   const users = useSelector((state: any) => state?.users);
   const {id} = useParams();
@@ -65,64 +70,74 @@ function EditComponents() {
   }
 
   return (
-    <div>
-      <Paper elevation={8} style={{padding: 20}}>
-        <Typography variant="h5" align="center" gutterBottom>
-          User Information
-        </Typography>
-        <form onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={4}>
-              <TextField
-                fullWidth
-                label="Name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <TextField
-                fullWidth
-                label="Email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={4} sm={0}>
-              <TextField
-                fullWidth
-                type="number"
-                label="Age"
-                name="age"
-                value={formData.age}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={4} sm={0}>
-              <TextField
-                fullWidth
-                label="Address"
-                name="address"
-                value={formData.address}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                fullWidth
-              >
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-      </Paper>
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar sx={{m: 1, bgcolor: "secondary.main"}}></Avatar>
+          <Typography component="h1" variant="h5">
+            Add new record
+          </Typography>
+          <form onSubmit={handleSubmit}>
+            
+                <TextField
+                  fullWidth
+ margin="normal"
+                  label="Name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+             
+                <TextField
+                  fullWidth
+ margin="normal"
+                  label="Email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              
+                <TextField
+                  fullWidth
+ margin="normal"
+                  type="number"
+                  label="Age"
+                  name="age"
+                  value={formData.age}
+                  onChange={handleChange}
+                />
+           
+                <TextField
+                  fullWidth
+ margin="normal"
+                  label="Address"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
+                />
+            
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  fullWidth
+
+                >
+                  Submit
+                </Button>
+             
+          </form>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 }
 

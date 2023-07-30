@@ -55,8 +55,6 @@ const handleClose = () => {
   setOpen(false);
 };
 
-
-
   return (
     <div className="details-container">
       <div>
@@ -68,16 +66,16 @@ const handleClose = () => {
           record.
         </span>
         <Stack marginBottom={4}>
-          <Button
-            variant="contained"
-            color="success"
+          <button
+            // variant="contained"
+            // color="success"
             onClick={() => {
               navigate("/create");
             }}
             className="btn-large"
           >
             Add New
-          </Button>
+          </button>
         </Stack>
       </div>
       <TableContainer component={Paper} sx={{backgroundColor: "grey"}}>

@@ -90,7 +90,6 @@ const navigate = useNavigate()
               justifyContent="center"
             >
               <Button variant="contained" sx={{height:"70px",width:"250px",fontSize:"19px"}} onClick={()=>navigate("/alldetails")}>See All details</Button>
-              {/* <Button variant="outlined">Secondary action</Button> */}
             </Stack>
           </Container>
         </Box>
