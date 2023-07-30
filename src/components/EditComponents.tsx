@@ -1,5 +1,11 @@
 import React, {useState, useEffect} from "react";
-import {Button, TextField, Grid, Paper, Typography, Box, Avatar} from "@mui/material";
+import {
+  Button,
+  TextField,
+  Typography,
+  Box,
+  Avatar,
+} from "@mui/material";
 import {useNavigate, useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {updateUser} from "../redux/Reducer";
@@ -7,9 +13,8 @@ import {createTheme, ThemeProvider} from "@mui/material/styles";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 
-
 interface FormData {
-  id: number; // Update the type to be 'number' if 'id' in the Redux store is always a number
+  id: number;
   name: string;
   email: string;
   age: string;
@@ -25,10 +30,10 @@ const initialState: FormData = {
   email: "",
   age: "",
   address: "",
-  id: 0
+  id: 0,
 };
 const defaultTheme = createTheme();
-function EditComponents() {
+const  EditComponents = () => {
   const users = useSelector((state: any) => state?.users);
   const {id} = useParams();
   const dispatch = useDispatch();
@@ -44,8 +49,8 @@ function EditComponents() {
     console.log(existingData, "exist");
 
     if (existingData.length > 0) {
-      const {id,name, email, age, address} = existingData[0];
-      setFormData({id,name, email, age, address});
+      const {id, name, email, age, address} = existingData[0];
+      setFormData({id, name, email, age, address});
     }
     setDataFetched(true);
   }, [id, users]);
@@ -62,7 +67,6 @@ function EditComponents() {
       ...prevFormData,
       [name]: value,
     }));
-    // console.log(name, value, "name value");
   };
 
   if (!dataFetched) {
@@ -83,57 +87,49 @@ function EditComponents() {
         >
           <Avatar sx={{m: 1, bgcolor: "secondary.main"}}></Avatar>
           <Typography component="h1" variant="h5">
-            Add new record
+            Update Record
           </Typography>
           <form onSubmit={handleSubmit}>
-            
-                <TextField
-                  fullWidth
- margin="normal"
-                  label="Name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-             
-                <TextField
-                  fullWidth
- margin="normal"
-                  label="Email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              
-                <TextField
-                  fullWidth
- margin="normal"
-                  type="number"
-                  label="Age"
-                  name="age"
-                  value={formData.age}
-                  onChange={handleChange}
-                />
-           
-                <TextField
-                  fullWidth
- margin="normal"
-                  label="Address"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                />
-            
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  fullWidth
+            <TextField
+              fullWidth
+              margin="normal"
+              label="Name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
 
-                >
-                  Submit
-                </Button>
-             
+            <TextField
+              fullWidth
+              margin="normal"
+              label="Email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+
+            <TextField
+              fullWidth
+              margin="normal"
+              type="number"
+              label="Age"
+              name="age"
+              value={formData.age}
+              onChange={handleChange}
+            />
+
+            <TextField
+              fullWidth
+              margin="normal"
+              label="Address"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+            />
+
+            <Button variant="contained" color="primary" type="submit" fullWidth>
+              Submit
+            </Button>
           </form>
         </Box>
       </Container>

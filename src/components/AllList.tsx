@@ -12,7 +12,7 @@ import {useNavigate} from "react-router";
 import {Link} from "react-router-dom";
 import {removeUser} from "../redux/Reducer";
 import {Stack} from "@mui/material";
-import "./style.css"
+import "./style.css";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -30,30 +30,26 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-
-export default function Home() {
+const Home = () => {
   const users = useSelector((state: any) => state?.users);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
-
-  console.log(users);
-
-const handleDelete = (id: any) => {
-  handleClickOpen();
-};
-  const handleAgree = (id:any) => {
+  const handleDelete = (id: any) => {
+    handleClickOpen();
+  };
+  const handleAgree = (id: any) => {
     dispatch(removeUser(id));
     handleClose();
   };
 
-const handleClickOpen = () => {
-  setOpen(true);
-};
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-const handleClose = () => {
-  setOpen(false);
-};
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div className="details-container">
@@ -67,8 +63,6 @@ const handleClose = () => {
         </span>
         <Stack marginBottom={4}>
           <button
-            // variant="contained"
-            // color="success"
             onClick={() => {
               navigate("/create");
             }}
@@ -95,7 +89,6 @@ const handleClose = () => {
               <TableCell className="row-style" align="right">
                 Address
               </TableCell>
-
               <TableCell
                 sx={{color: "white", fontSize: "1.2rem"}}
                 align="right"
@@ -183,7 +176,7 @@ const handleClose = () => {
                         color="error"
                         onClick={() => handleAgree(row.id)}
                       >
-                       Delete
+                        Delete
                       </Button>
                     </DialogActions>
                   </Dialog>
@@ -197,3 +190,4 @@ const handleClose = () => {
   );
 }
 
+export default Home;

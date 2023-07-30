@@ -1,27 +1,35 @@
-.text{
-font-size:1.6rem
+.text {
+    font-size: 1.6rem
 }
 
-.details-container{
-padding: 50px;
+.details-container {
+    padding: 50px;
 }
 
-.btn-large{
-width: 200px;
- height:60px;
- font-size:1.6rem !important;
-background-color:black;
-color:white;
-border-radius:80px;
-cursor: pointer;
+.btn-large {
+    width: 200px;
+    height: 60px;
+    font-size: 1.6rem !important;
+    background-color: black;
+    color: white;
+    border-radius: 80px;
+    cursor: pointer;
 }
 
-
+.home-btn {
+    width: 250px;
+    height: 60px;
+    font-size: 1.6rem !important;
+    background-color: black;
+    color: white;
+    border-radius: 80px;
+    cursor: pointer;
+}
 
 .row-style {
-font-size: 1.2rem !important;
-color:white !important;
-font-weight: bold;
+    font-size: 1.2rem !important;
+    color: white !important;
+    font-weight: bold;
 }
 
 .data-row {
