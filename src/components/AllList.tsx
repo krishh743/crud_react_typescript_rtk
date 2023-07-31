@@ -73,7 +73,7 @@ const Home = () => {
         </Stack>
       </div>
       <TableContainer component={Paper} sx={{backgroundColor: "grey"}}>
-        <Table sx={{minWidth: 650}} aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead sx={{backgroundColor: "black"}}>
             <TableRow>
               <TableCell className="row-style">User ID</TableCell>
@@ -188,6 +188,6 @@ const Home = () => {
       </TableContainer>
     </div>
   );
-}
+};
 
 export default Home;

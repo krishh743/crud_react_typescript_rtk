@@ -46,8 +46,6 @@ const Create: React.FC<Props> = ({onSubmit}) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    // Perform form validation
     const errors: Partial<FormData> = {};
     Object.entries(formData).forEach(([key, value]) => {
       if (!value.trim()) {
@@ -56,7 +54,6 @@ const Create: React.FC<Props> = ({onSubmit}) => {
     });
     setFormErrors(errors);
 
-    // If there are errors, don't submit the form
     if (Object.keys(errors).length > 0) {
       return;
     }
