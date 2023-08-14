@@ -10,7 +10,6 @@ interface User {
 export interface UserState {
   users: User[];
 }
-
 const initialState: UserState = {
   users: userList,
 };
