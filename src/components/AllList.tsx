@@ -11,7 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
 import {Link} from "react-router-dom";
 import {removeUser} from "../redux/Reducer";
-import {Stack} from "@mui/material";
+import {Stack, TablePagination} from "@mui/material";
 import "./style.css";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -35,15 +35,8 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
-
-
-
-
-
-
-
-
-
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleDelete = (id: any) => {
     handleClickOpen();
@@ -60,6 +53,18 @@ const Home = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleChangePage = (event: any, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: any) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const emptyRows =
+    rowsPerPage - Math.min(rowsPerPage, users.length - page * rowsPerPage);
 
   return (
     <div className="details-container">
@@ -108,7 +113,13 @@ const Home = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map((row: any) => (
+            {(rowsPerPage > 0
+              ? users.slice(
+                  page * rowsPerPage,
+                  page * rowsPerPage + rowsPerPage
+                )
+              : users
+            ).map((row: any) => (
               <TableRow
                 key={row.id}
                 sx={{"&:last-child td, &:last-child th": {border: 0}}}
@@ -193,8 +204,22 @@ const Home = () => {
                 </div>
               </TableRow>
             ))}
+            {emptyRows > 0 && (
+              <TableRow style={{height: 53 * emptyRows}}>
+                <TableCell colSpan={6} />
+              </TableRow>
+            )}
           </TableBody>
         </Table>
+        <TablePagination
+          rowsPerPageOptions={[10, 20, 30]}
+          component="div"
+          count={users.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </TableContainer>
     </div>
   );
